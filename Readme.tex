@@ -152,11 +152,11 @@
 	$\texttt{\$a3 = arreglo[1]}$ y $\texttt{\$a4 = arreglo[2]}$.\\
 	La existencia de $\texttt{\$ra}$ en el marco de $\texttt{funcion\_B}$
 	dependería de si esa función llama a otras subrutinas o no.\\
-	En cuanto a $\texttt{arreglo[]}$, nunca se especifica dónde se guarda, así 
-	que en el caso general pueden estar bien en los registros temporales de la 
-	$\texttt{funcion\_A}$ o en los registros almacenados del marco de 
-	$\texttt{funcion\_B}$, dependiendo de como se implemente la 
-	$\texttt{funcion\_A}$ o en ninguna parte si no son necesarios después de la
-	llamada a la $\texttt{funcion\_B}$.
+	En cuanto a $\texttt{arreglo[]}$, se especificó por medios ajenos a la
+	descripción de la práctica que se guarda como registro temporal. Entonces, 
+	nunca se especifica dónde se guarda, así que en el caso general pueden estar
+	bien en los registros temporales del marco de la $\texttt{funcion\_A}$ o en 
+	ninguna parte si no son necesarios después de la llamada a la 
+	$\texttt{funcion\_B}$.
     \end{enumerate}
 \end{document}
