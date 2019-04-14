@@ -136,7 +136,15 @@
 		\caption{Pila de marcos de la función B}
 	\end{figure}
 	}
+	Con $\texttt{a0 = a}$, $\texttt{a1 = b}$, $\texttt{a2 = arreglo[0]}$,
+	$\texttt{a0 = arreglo[1]}$ y $\texttt{a0 = arreglo[2]}$.\\
 	La existencia de $\texttt{\$ra}$ en el marco de $\texttt{funcion\_B}$
-	dependería de si esa función llama a otras subrutinas o no.
+	dependería de si esa función llama a otras subrutinas o no.\\
+	En cuanto a los valores de $\texttt{a[]}$, nunca se especifica dónde se
+	guardan, así que en el caso general pueden estar bien en los registros 
+	temporales de la $\texttt{funcion\_A}$ o en los registros almacenados del
+	marco de $\texttt{funcion\_B}$, dependiendo de como se implemente la 
+	$\texttt{funcion\_A}$ o en ninguna parte si no son necesarios después de la
+	llamada a la $\texttt{funcion\_B}$.
     \end{enumerate}
 \end{document}
