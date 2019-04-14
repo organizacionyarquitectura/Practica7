@@ -50,7 +50,7 @@
 	constante en la ejecución de la función invocada.\\
 	Sí se puede prescindir del fp, siempre y cuando se sepa exactamente la
 	cantidad de valores que se deben guardar en cada marco, esto es que no haya
-	una cantidad variable de argumentos para una rutina dada. \\
+	una cantidad variable de variables necesarias para una rutina dada. \\
 	No todos los procesadores tienen los recursos de hardware para implementar 
 	un apuntador de marco y algunas implementaciones donde se sabe exactamente 
 	la distancia del marco, no quieren tener la sobrecarga adicional de 
@@ -62,11 +62,11 @@
 	invocaciones a otras subrutinas y como \textbf{subrutina hoja} a una subrutina
 	que no realiza llamadas a otras subrutinas. \\
 	Notemos que dada una rutina arbitraria, su marco debe tener al menos los
-	cuatro espacios para los argumentos y un espacio para el apuntador al marco, 
-	según el protocolo dado.\\
-	Entonces, a lo menos, el marco tendría un tamaño de 20 bytes, que pasaría
-	cuando no tenga que almacenar nada de su invocador ni de sus invocados, que 
-	con relleno tendría un tamaño de 24 bytes.
+	cuatro espacios para los argumentos según el protocolo dado.\\
+	Entonces, a lo menos, el marco tendría un tamaño de 16 bytes, que pasaría
+	cuando no tenga que almacenar nada de su invocador ni de sus invocados y
+	tampoco requiera una cantidad variable de variables locales que necesite
+	guardar entre llamados a subrutinas.
 	
 		\begin{enumerate}
 			%a
@@ -86,12 +86,9 @@
 			no se modificaría al hacer durante las invocaciones.\\
 			Entonces el tamaño mínimo del marco es el tamaño mínimo de cuaquier
 			rutina más el registro para guardar su dirección de retorno, que 
-			sería 24 bytes en total, que no requiere relleno.\\
+			sería 20 bytes en total, que sería 24 bytes con relleno.\\
 			Y esto ocurriría cuando no necesite guardar ningún registro temporal
 			entre llamadas a subrutinas y no utilice registros almacenados.
-			%El tamaño mínimo que puede tener un marco para una subrutina nodo es
-			%dos veces el tamaño del marco original, asumiendo que es llamada una
-			%vez, que sería de 32 bytes.
 			}
 			%b
 			\item {
@@ -107,8 +104,8 @@
 			se vayan a modificar durante la ejecución de esa rutina.\\
 			En el caso extremo, digamos que no se usan registras almacenados.\\
 			Entonces, el tamaño mínimo del marco sería el mínimo de cualquier
-			subrutina arbitraria, que es 20 bytes, que son 24 bytes con rellenos.\\
-			Y este caso se daría cuando no se usen registros almacenas en la
+			subrutina arbitraria, que es 16 bytes.\\
+			Y este caso se daría cuando no se usen registros almacenados en la
 			subrutina hoja.
 			}
 		\end{enumerate}
