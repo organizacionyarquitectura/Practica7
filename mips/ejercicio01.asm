@@ -1,4 +1,4 @@
-# 3.
+# 1.
 # Escribe una rutina que calcule recursivamente el coeficiente binomial de n en
 # k utilizando la identidad de Pascal
 
