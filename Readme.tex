@@ -65,12 +65,14 @@
 	invocaciones a otras subrutinas y como \textbf{subrutina hoja} a una subrutina
 	que no realiza llamadas a otras subrutinas. \\
 	
-	Notemos que dada una rutina arbitraria, su marco debe tener al menos los
-	cuatro espacios para los argumentos según el protocolo dado.\\
-	Entonces, a lo menos, el marco tendría un tamaño de 16 bytes, que pasaría
-	cuando no tenga que almacenar nada de su invocador ni de sus invocados y
-	tampoco requiera una cantidad variable de variables locales que necesite
-	guardar entre llamados a subrutinas.
+	Notemos que dada una rutina arbitraria, si no tiene que almacenar nada de su
+	invocador ni de sus invocados y tampoco requiera una cantidad variable de 
+	variables locales que necesite guardar entre llamados a subrutinas, entonces
+	no necesita de un marco, por lo que técnicamente el tañamo de su marco es 0
+	bytes.\\
+	Pero si necesita guardar una cosa al menos, entonces necesita tomar en
+	cuenta los 4 registros de sus parámetros. Entonces, si una rutina tiene un
+	marco, este es de al menos 16 bytes.
 	
 		\begin{enumerate}
 			%a
@@ -90,8 +92,9 @@
 			En el caso extremo digamos que no los necesita, entonces el marco 
 			no se modificaría al hacer durante las invocaciones.\\
 			Entonces el tamaño mínimo del marco es el tamaño mínimo de cualquier
-			rutina más el registro para guardar su dirección de retorno, que 
-			sería 20 bytes en total, que sería 24 bytes con relleno.\\
+			rutina que sí tenga marco, más el registro para guardar su dirección
+			de retorno, que sería 20 bytes en total, que sería 24 bytes con 
+			relleno.\\
 			
 			Y esto ocurriría cuando no necesite guardar ningún registro temporal
 			entre llamadas a subrutinas y no utilice registros almacenados.\\
@@ -110,11 +113,12 @@
 			Entonces sólo sería necesario guardar los registros almacenados que 
 			se vayan a modificar durante la ejecución de esa rutina.\\
 			En el caso extremo, digamos que no se usan registras almacenados.\\
-			Entonces, el tamaño mínimo del marco sería el mínimo de cualquier
-			subrutina arbitraria, que es 16 bytes.\\
-			
-			Y este caso se daría cuando no se usen registros almacenados en la
-			subrutina hoja.\\
+			Entonces, técnicamente la rutina podría presindir del marco, pues no
+			lo usa. Entoces el tamaño mínimo sería técnicamente 0 bytes, que
+			sucede cuando no se usen registros almacenados en la subrutina hoja.
+			De otra manera, si llega a usar un registro que tenga que guardar,
+			entonces el mínimo sería 20 bytes, 4 de los parámetros más 1 del
+			registro a guardar.
 			}
 		\end{enumerate}
 		
