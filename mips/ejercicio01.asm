@@ -1,5 +1,5 @@
 # Ejercicio 1
-# Rutina que calcula recursivamente el coeficiente binomial de n en
+# Programa que calcula recursivamente el coeficiente binomial de n en
 # k utilizando la identidad de Pascal
 
 

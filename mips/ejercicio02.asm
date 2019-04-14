@@ -1,5 +1,5 @@
 # Ejercicio 2
-# Función misteriosa que obtiene la potencia de un número
+# Programa misterioso que obtiene la potencia de un número en base a otro
 # b elevado a un número a (b^a)
 
 .data
@@ -49,9 +49,10 @@ main: 	# Preambulo main
 	lw	$fp, 20($sp)	# 4 Restaurar $fp
 	fin 
 	
+	#Para este punto, la rutina ya termino, por lo que lo siguiente no se ejecuta
 	# mist_1 recibe como argumentos $a0 y $a1
-	move $a0, $t0 # Se pasa el argumento $a0
-	move $a1, $t1 # Se pasa el argumento $a1
+	#move $a0, $t0 # Se pasa el argumento $a0
+	#move $a1, $t1 # Se pasa el argumento $a1
 
 mist_1: # Preambulo mist_1
 	subi	$sp, $sp, 40	# 1 Reservar memoria para el marco
@@ -90,9 +91,10 @@ end_1: # Conclusion mist_1
 	addi	$sp, $sp, 40
 	jr	$ra
 	
+	#Para este punto, la rutina ya termino, por lo que lo siguiente no se ejecuta
 	# mist_0 recibe como argumentos $a0 y $a1
-	move $a0, $t0 # Se pasa el argumento $a0
-	move $a1, $t1 # Se pasa el argumento $a1
+	#move $a0, $t0 # Se pasa el argumento $a0
+	#move $a1, $t1 # Se pasa el argumento $a1
 
 mist_0: # Preambulo mist_0
 	subi	$sp, $sp, 32	# 1 Reservar memoria para el marco
