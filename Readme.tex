@@ -100,7 +100,7 @@
 			habría una invocación.\\
 			En cuanto al preámbulo, tenemos que, como no hay llamadas a
 			subrutinas, no es necesario guardar la dirección de retorno.\\
-			Entonces sólo sería neccesario guardar los registros almaccenas que 
+			Entonces sólo sería necesario guardar los registros almaccenas que 
 			se vayan a modificar durante la ejecución de esa rutina.\\
 			En el caso extremo, digamos que no se usan registras almacenados.\\
 			Entonces, el tamaño mínimo del marco sería el mínimo de cualquier
@@ -136,8 +136,8 @@
 		\caption{Pila de marcos de la función B}
 	\end{figure}
 	}
-	Con $\texttt{a0 = a}$, $\texttt{a1 = b}$, $\texttt{a2 = arreglo[0]}$,
-	$\texttt{a0 = arreglo[1]}$ y $\texttt{a0 = arreglo[2]}$.\\
+	Con $\texttt{\$a0 = a}$, $\texttt{\$a1 = b}$, $\texttt{\$a2 = arreglo[0]}$,
+	$\texttt{\$a3 = arreglo[1]}$ y $\texttt{\$a4 = arreglo[2]}$.\\
 	La existencia de $\texttt{\$ra}$ en el marco de $\texttt{funcion\_B}$
 	dependería de si esa función llama a otras subrutinas o no.\\
 	En cuanto a los valores de $\texttt{a[]}$, nunca se especifica dónde se
