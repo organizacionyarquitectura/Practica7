@@ -1,6 +1,10 @@
+# Ejercicio 2
+# Función misteriosa que obtiene la potencia de un número
+# b elevado a un número a (b^a)
+
 .data
-a: .word 3
-b: .word 3
+a: .word 5
+b: .word 4
 
 # fin de programa
 ###
@@ -38,20 +42,16 @@ main: 	# Preambulo main
 	
 	# Retorno de mist_1
 	move	$t0, $v0	# Copiar el valor de mist_1
-	#lw	$s0, 32($sp)	# Restaurar $s0 con el valor de a
-	#lw	$s0, 28($sp)	# Restaurar $t0 con el valor de b
-	
 	print_intr($v0)
 	
 	# Conclusion main
 	lw	$ra, 16($sp)	# 3 Restaurar $ra
 	lw	$fp, 20($sp)	# 4 Restaurar $fp
-	
 	fin 
 	
 	# mist_1 recibe como argumentos $a0 y $a1
-	#move $a0, $t0 # Se pasa el argumento $a0
-	#move $a1, $t1 # Se pasa el argumento $a1
+	move $a0, $t0 # Se pasa el argumento $a0
+	move $a1, $t1 # Se pasa el argumento $a1
 
 mist_1: # Preambulo mist_1
 	subi	$sp, $sp, 40	# 1 Reservar memoria para el marco
@@ -69,12 +69,12 @@ loop_1: beqz $s0, end_1
 	# Invocación de mist_0
 	sw	$t0, 28($sp) # Guardando registros temporales
 	sw	$t1, 32($sp) # Guardando registros temporales
+	
 	move 	$a0, $t0 # Se pasa el argumento $a0
 	move 	$a1, $t1 # Se pasa el argumento $a1
 	jal	mist_0	# 3 Brincar a subrutina
 	
 	# Retorno de mist_0
-	#move	$t0, $v0	# Copiar el valor de mist_0
 	lw	$t0, 28($sp)	# Restaurar $s0 con el valor de a
 	lw	$t1, 32($sp)	# Restaurar $t0 con el valor de b
 	
@@ -91,8 +91,8 @@ end_1: # Conclusion mist_1
 	jr	$ra
 	
 	# mist_0 recibe como argumentos $a0 y $a1
-	#move $a0, $t0 # Se pasa el argumento $a0
-	#move $a1, $t1 # Se pasa el argumento $a1
+	move $a0, $t0 # Se pasa el argumento $a0
+	move $a1, $t1 # Se pasa el argumento $a1
 
 mist_0: # Preambulo mist_0
 	subi	$sp, $sp, 32	# 1 Reservar memoria para el marco
@@ -101,13 +101,13 @@ mist_0: # Preambulo mist_0
 	addi	$fp, $sp, 28	# 4 Establecer $fp
 	
 	mult $a0, $a1
+	mflo $v0 # Se retorna el resultado en $v0
 	
 	# Conclusion mist_0
-	mflo $v0 # Se retorna el resultado en $v0
 	lw	$ra, 16($sp)	# 3 Restaurar $ra
 	lw	$fp, 20($sp)	# 4 Restaurar $fp
-	#lw	$s0, 32($sp)	# Restaurar $s0 con el valor de a
-	#lw	$s0, 28($sp)	# Restaurar $t0 con el valor de b
 	addi	$sp, $sp 32
 	jr $ra
+	
+	
 	

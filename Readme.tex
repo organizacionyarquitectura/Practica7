@@ -41,6 +41,7 @@
     %1
     \item {
     ¿Qué utilidad tiene el registro $\textbf{\$fp}$? ¿Se puede prescindir de el?\\
+    
 	El registro $\textbf{\$fp}$ es el que corresponde al Apuntador del marco, 
 	el cual guarda la dirección de la última palabra del marco. \\
 	Un apuntador de marco, si es utilizado, apunta a una dirección en la pila 
@@ -48,19 +49,22 @@
 	invocada son localizadas. \\
 	Este apuntador es establecido en la entrada de una función y se mantiene 
 	constante en la ejecución de la función invocada.\\
+	
 	Sí se puede prescindir del fp, siempre y cuando se sepa exactamente la
 	cantidad de valores que se deben guardar en cada marco, esto es que no haya
 	una cantidad variable de variables necesarias para una rutina dada. \\
 	No todos los procesadores tienen los recursos de hardware para implementar 
 	un apuntador de marco y algunas implementaciones donde se sabe exactamente 
 	la distancia del marco, no quieren tener la sobrecarga adicional de 
-	mantenerlo.
+	mantenerlo.\\
 	}
+
 	%2
 	\item {
 	Definimos como \textbf{subrutina nodo} a una subrutina que realiza una o más
 	invocaciones a otras subrutinas y como \textbf{subrutina hoja} a una subrutina
 	que no realiza llamadas a otras subrutinas. \\
+	
 	Notemos que dada una rutina arbitraria, su marco debe tener al menos los
 	cuatro espacios para los argumentos según el protocolo dado.\\
 	Entonces, a lo menos, el marco tendría un tamaño de 16 bytes, que pasaría
@@ -75,6 +79,7 @@
 			subrutina nodo? ¿Bajo qué condiciones ocurre?\\
 			Sólo se guardan cosas en el marco durante el preámbulo y la 
 			invocación.\\
+			
 			Para que una rutina llame a otra, durante su preámbulo debe guardar 
 			su dirección de retorno en su marco, pues al invocar a otras rutinas
 			éste será modificado. Además, debe almacenar los registros
@@ -84,29 +89,32 @@
 			es guardar los registros temporales si los va a necesitar después.
 			En el caso extremo digamos que no los necesita, entonces el marco 
 			no se modificaría al hacer durante las invocaciones.\\
-			Entonces el tamaño mínimo del marco es el tamaño mínimo de cuaquier
+			Entonces el tamaño mínimo del marco es el tamaño mínimo de cualquier
 			rutina más el registro para guardar su dirección de retorno, que 
 			sería 20 bytes en total, que sería 24 bytes con relleno.\\
+			
 			Y esto ocurriría cuando no necesite guardar ningún registro temporal
-			entre llamadas a subrutinas y no utilice registros almacenados.
+			entre llamadas a subrutinas y no utilice registros almacenados.\\
 			}
 			%b
 			\item {
 			¿Cuál es el tamaño mínimo que puede tener un marco para una 
 			subrutina hoja? ¿Bajo qué condiciones ocurre?\\
+			
 			Sólo se guardan cosas en el marco durante el preámbulo y la 
 			invocación.\\
-			Cómo no una subrutina hoja no hace llamadas a otras rutinas, nunca 
+			Cómo una subrutina hoja no hace llamadas a otras rutinas, nunca 
 			habría una invocación.\\
 			En cuanto al preámbulo, tenemos que, como no hay llamadas a
 			subrutinas, no es necesario guardar la dirección de retorno.\\
-			Entonces sólo sería necesario guardar los registros almaccenas que 
+			Entonces sólo sería necesario guardar los registros almacenados que 
 			se vayan a modificar durante la ejecución de esa rutina.\\
 			En el caso extremo, digamos que no se usan registras almacenados.\\
 			Entonces, el tamaño mínimo del marco sería el mínimo de cualquier
 			subrutina arbitraria, que es 16 bytes.\\
+			
 			Y este caso se daría cuando no se usen registros almacenados en la
-			subrutina hoja.
+			subrutina hoja.\\
 			}
 		\end{enumerate}
 		
@@ -138,6 +146,7 @@
 	}
 	Con $\texttt{\$a0 = a}$, $\texttt{\$a1 = b}$, $\texttt{\$a2 = arreglo[0]}$,
 	$\texttt{\$a3 = arreglo[1]}$ y $\texttt{\$a4 = arreglo[2]}$.\\
+	
 	La existencia de $\texttt{\$ra}$ en el marco de $\texttt{funcion\_B}$
 	dependería de si esa función llama a otras subrutinas o no.\\
 	En cuanto a los valores de $\texttt{a[]}$, nunca se especifica dónde se

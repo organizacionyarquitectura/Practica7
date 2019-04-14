@@ -1,13 +1,18 @@
-# 1.
-# Escribe una rutina que calcule recursivamente el coeficiente binomial de n en
+# Ejercicio 1
+# Rutina que calcula recursivamente el coeficiente binomial de n en
 # k utilizando la identidad de Pascal
 
-# variables
-	.data
-n:	.word	10
-k:	.word	5
 
 # macros
+
+# entrada de los números
+###
+.macro	scan_intr()
+	li	$v0 5
+	syscall
+.end_macro
+###
+
 
 # fin de programa
 ###
@@ -73,7 +78,7 @@ k:	.word	5
 	# paso 2: pasar los argumentos a la subrutina
 	move $a0 %n
 	move $a1 %k
-	# paso 3 pasar el control
+	# paso 3: pasar el control
 	jal coef_bin
 	.end_macro
 	
@@ -90,14 +95,22 @@ k:	.word	5
 	 
 # programa
 	.text
-	lw	$a0 n 
-	lw	$a1 k 
+	#Introduce el valor de n
+	scan_intr()
+	move	$a0 $v0
+	#Introduce el valor de k
+	scan_intr()
+	move	$a1 $v0
+	#Invocación a coef
 	jal	coef_bin 
+	#Retorno de valores
 	print_intr($v0) 
+	#Fin del programa
 	fin 
 
 # subrutina para calcular el coeficiente binomial
 coef_bin:	
+	#preámbulo
 	pream
 	
 	# casos base
@@ -108,6 +121,7 @@ coef_bin:
 	subi $t0 $a0 1
 	subi $t1 $a1 1
 	invc($t0, $t1)
+	#retorno
 	ret
 	
 	move $s0 $v0
